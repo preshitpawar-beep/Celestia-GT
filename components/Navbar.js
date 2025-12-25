@@ -9,12 +9,15 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/">
+          href="/"
+          className="bg-navy px-4 py-2 rounded-lg flex items-center"
+          >
           <Image
-            src="/logo1.webp"
-            alt="Celestia Global Trade"
-            width={180}
-            height={40}
-            priority
+          src="/logo1.webp"
+          alt="Celestia Global Trade"
+          width={160}
+          height={36}
+          priority
           />
         </Link>
 
