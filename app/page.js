@@ -10,22 +10,22 @@ const processSteps = [
   {
     title: "Requirement",
     desc: "Share your technical drawings, specifications, and quantity requirements.",
-    icon: "/process-requirement.webp"
+    icon: "/process-requirement.png"
   },
   {
     title: "Supplier",
     desc: "We align suitable manufacturing partners based on capability, compliance, and application.",
-    icon: "/process-supplier.webp"
+    icon: "/process-supplier.png"
   },
   {
     title: "Quotation",
     desc: "Receive a transparent, competitive quotation quickly.",
-    icon: "/process-quotation.webp"
+    icon: "/process-quotation.png"
   },
   {
     title: "Production",
     desc: "Manufacturing is coordinated with defined process controls and checkpoints.",
-    icon: "/process-production.webp"
+    icon: "/process-production.png"
   },
   {
     title: "Inspection",
@@ -35,12 +35,12 @@ const processSteps = [
   {
     title: "Shipping",
     desc: "Export packaging, documentation, and logistics coordination for international delivery.",
-    icon: "/process-shipping.webp"
+    icon: "/process-shipping.png"
   },
   {
     title: "Support",
     desc: "Post-shipment support, documentation handling, and buyer coordination.",
-    icon: "/process-support.webp"
+    icon: "/process-support.png"
   }
 ];
 
@@ -96,7 +96,7 @@ export default function Home() {
       {/* ---------------- HERO ---------------- */}
       <section className="relative bg-navy text-white py-32 overflow-hidden">
         <Image
-          src="/hero-bg.webp"
+          src="/hero-bg.png"
           alt="Engineering exports"
           fill
           className="object-cover opacity-20"
@@ -175,7 +175,7 @@ export default function Home() {
       {/* ---------------- CTA ---------------- */}
       <section className="relative bg-navy py-24 text-center text-white overflow-hidden">
         <Image
-          src="/cta-bg.webp"
+          src="/cta-bg.png"
           alt="Background texture"
           fill
           className="object-cover opacity-10"
