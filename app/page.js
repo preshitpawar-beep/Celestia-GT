@@ -61,20 +61,27 @@ function ProcessSection() {
           <button
             key={i}
             onClick={() => setActiveIndex(i)}
-            className={`p-6 rounded-xl shadow text-center transition-all duration-200
+            className={`rounded-xl border shadow-sm p-6 flex flex-col items-center transition
               ${
                 i === activeIndex
                   ? "bg-gold text-white"
-                  : "bg-white hover:bg-slate-50"
+                  : "bg-white hover:shadow-md"
               }`}
           >
-            <Image
-              src={step.icon}
-              alt={step.title}
-              width={36}
-              height={36}
-              className="mx-auto mb-3"
-            />
+            {/* ICON CONTAINER */}
+            <div
+              className={`w-20 h-20 rounded-full flex items-center justify-center mb-4
+                ${i === activeIndex ? "bg-white/20" : "bg-gold/10"}`}
+            >
+              <Image
+                src={step.icon}
+                alt={step.title}
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+            </div>
+
             <p className="font-semibold">{step.title}</p>
           </button>
         ))}
@@ -156,14 +163,21 @@ export default function Home() {
               { title: "Global Reach", icon: "/why-global.png", desc: "Serving UK, EU, Middle East, and Americas." },
               { title: "Technical Documentation", icon: "/why-docs.png", desc: "Inspection and quality documentation with every shipment." }
             ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  width={40}
-                  height={40}
-                  className="mb-4"
-                />
+              <div
+                key={i}
+                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
+              >
+                {/* BIG ICON */}
+                <div className="w-24 h-24 rounded-full bg-gold/10 flex items-center justify-center mb-6">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={56}
+                    height={56}
+                    className="object-contain"
+                  />
+                </div>
+
                 <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
                 <p className="text-slate-600">{item.desc}</p>
               </div>
