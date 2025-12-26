@@ -131,55 +131,61 @@ export default function Home() {
   return (
     <main>
 
-     {/* ---------------- HERO ---------------- */}
-<section className="relative bg-navy text-white py-32 overflow-hidden">
-  {/* Background Image */}
-  <Image
-    src="/hero-bg.png"
-    alt="Precision CNC machining in industrial manufacturing"
-    fill
-    className="object-cover"
-    priority
+{/* ---------------- HERO ---------------- */}
+<section className="relative text-white overflow-hidden">
+
+  {/* Background image container */}
+  <div
+    className="
+      absolute inset-0
+      bg-cover bg-center
+      md:bg-fixed
+    "
+    style={{
+      backgroundImage: "url('/hero-bg.png')"
+    }}
   />
 
-  {/* Dark Overlay */}
+  {/* Overlay */}
   <div className="absolute inset-0 bg-black/60" />
 
-  <div className="relative max-w-7xl mx-auto px-6">
+  {/* Content */}
+  <div className="
+    relative z-10
+    max-w-7xl mx-auto px-6
+    py-24 md:py-32
+  ">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
       className="max-w-2xl text-left"
     >
-      {/* Accent line */}
       <div className="w-20 h-1 bg-gold mb-6" />
 
-      {/* Headline */}
       <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-        Engineering Exports from India  
+        Engineering Exports from India
         <br className="hidden md:block" />
         to Global Markets
       </h1>
 
-      {/* Subheading */}
-      <p className="text-lg md:text-xl text-slate-200 mb-6">
+      <p className="text-lg md:text-xl text-slate-200 mb-8">
         Supplying precision-engineered components and assemblies,
         supported by structured quality control and export coordination.
       </p>
 
-      {/* CTA Buttons */}
-      <div className="flex flex-wrap gap-5 mt-8">
-        <button className="bg-gold text-navy px-7 py-3 rounded-md font-medium hover:bg-gold/90 transition">
+      <div className="flex flex-wrap gap-5">
+        <button className="bg-gold text-navy px-7 py-3 rounded-md font-medium">
           Explore Capabilities →
         </button>
-        <button className="border border-white/40 px-7 py-3 rounded-md font-medium hover:bg-white hover:text-navy transition">
+        <button className="border border-white/40 px-7 py-3 rounded-md font-medium">
           Request a Quote
         </button>
       </div>
     </motion.div>
   </div>
 </section>
+
 
       {/* ---------------- OUR PROCESS ---------------- */}
       <ProcessSection />
@@ -230,12 +236,17 @@ export default function Home() {
 
 {/* ---------------- CTA ---------------- */}
 <section
-  className="relative py-32 text-center text-white bg-fixed bg-center bg-cover"
+  className="
+    relative text-white text-center
+    py-24 md:py-32
+    bg-cover bg-center
+    md:bg-fixed
+  "
   style={{
     backgroundImage: "url('/cta-bg.png')"
   }}
 >
-  {/* Neutral dark overlay */}
+  {/* Overlay */}
   <div className="absolute inset-0 bg-black/55" />
 
   <div className="relative z-10 max-w-3xl mx-auto px-6">
@@ -244,7 +255,7 @@ export default function Home() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mb-8 text-xl"
+      className="mb-8 text-lg md:text-xl"
     >
       Send us your requirement — we’ll respond within 24 hours.
     </motion.p>
