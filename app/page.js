@@ -228,23 +228,37 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* ---------------- CTA ---------------- */}
-      <section className="relative bg-navy py-24 text-center text-white overflow-hidden">
-        <Image
-          src="/cta-bg.png"
-          alt="Background texture"
-          fill
-          className="object-cover opacity-10"
-        />
-        <div className="relative">
-          <p className="mb-6 text-lg">
-            Send us your requirement — we’ll respond within 24 hours.
-          </p>
-          <button className="bg-gold px-8 py-4 rounded font-medium">
-            Submit Enquiry
-          </button>
-        </div>
-      </section>
+{/* ---------------- CTA ---------------- */}
+<section
+  className="relative py-32 text-center text-white bg-fixed bg-center bg-cover"
+  style={{
+    backgroundImage: "url('/cta-bg.png')"
+  }}
+>
+  {/* Neutral dark overlay */}
+  <div className="absolute inset-0 bg-black/55" />
+
+  <div className="relative z-10 max-w-3xl mx-auto px-6">
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="mb-8 text-xl"
+    >
+      Send us your requirement — we’ll respond within 24 hours.
+    </motion.p>
+
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.3 }}
+      className="bg-gold text-navy px-10 py-4 rounded-md font-medium"
+    >
+      Submit Enquiry
+    </motion.button>
+  </div>
+</section>
+
 
     </main>
   );
