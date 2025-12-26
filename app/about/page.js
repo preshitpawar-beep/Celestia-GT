@@ -3,17 +3,36 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+/* ---------------- MOTION PRESETS ---------------- */
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+/* ---------------- ABOUT PAGE ---------------- */
+
 export default function AboutPage() {
   return (
     <main>
 
       {/* ---------------- HERO ---------------- */}
-      <section className="relative bg-navy text-white py-28 overflow-hidden">
+      <section className="relative bg-navy text-white py-28">
         <div className="max-w-7xl mx-auto px-6">
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="text-5xl font-bold mb-6"
           >
             About Celestia GT
@@ -32,23 +51,29 @@ export default function AboutPage() {
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
-          {/* Image Placeholder */}
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="relative h-[420px] rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400"
+            variants={fadeLeft}
+            className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg"
           >
-            Image Placeholder
+            <Image
+              src="/about/about-who-we-are.png"
+              alt="Engineering manufacturing capability"
+              fill
+              className="object-cover"
+              priority
+            />
           </motion.div>
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={fadeRight}
           >
             <h2 className="text-4xl font-bold mb-6">Who We Are</h2>
 
@@ -64,7 +89,7 @@ export default function AboutPage() {
               Our role is to simplify global procurement by managing supplier
               coordination, quality assurance, inspection processes,
               documentation, and export logistics — allowing our clients to
-              focus on engineering and growth.
+              focus on engineering execution and growth.
             </p>
           </motion.div>
         </div>
@@ -73,9 +98,15 @@ export default function AboutPage() {
       {/* ---------------- WHAT WE DO ---------------- */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-4xl font-bold text-center mb-16"
+          >
             What We Do
-          </h2>
+          </motion.h2>
 
           <div className="grid md:grid-cols-3 gap-10">
             {[
@@ -94,10 +125,11 @@ export default function AboutPage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
+                variants={fadeUp}
+                transition={{ delay: i * 0.1 }}
                 className="bg-white p-8 rounded-xl shadow"
               >
                 <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
@@ -114,10 +146,10 @@ export default function AboutPage() {
 
           {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={fadeLeft}
           >
             <h2 className="text-4xl font-bold mb-6">How We Operate</h2>
 
@@ -130,15 +162,20 @@ export default function AboutPage() {
             </ul>
           </motion.div>
 
-          {/* Image Placeholder */}
+          {/* Image */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            className="relative h-[420px] rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400"
+            variants={fadeRight}
+            className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg"
           >
-            Image Placeholder
+            <Image
+              src="/about/about-how-we-operate.png"
+              alt="Engineering workflow and inspection process"
+              fill
+              className="object-cover"
+            />
           </motion.div>
         </div>
       </section>
@@ -146,10 +183,10 @@ export default function AboutPage() {
       {/* ---------------- CLOSING STATEMENT ---------------- */}
       <section className="py-24 bg-navy text-white text-center">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
+          variants={fadeUp}
           className="max-w-4xl mx-auto text-xl italic"
         >
           “Precision in every process. Reliability in every shipment.
