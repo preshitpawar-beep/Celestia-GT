@@ -110,47 +110,63 @@ export default function Home() {
   return (
     <main>
 
-      {/* ---------------- HERO ---------------- */}
-      <section className="relative bg-navy text-white py-32 overflow-hidden">
-        <Image
-          src="/hero-bg.png"
-          alt="Engineering exports"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
+{/* ---------------- HERO ---------------- */}
+<section className="relative bg-navy text-white min-h-screen flex items-center justify-center overflow-hidden">
+  
+  {/* Intro Logo Animation */}
+  <motion.div
+    initial={{ opacity: 1, scale: 1 }}
+    animate={{ opacity: 0, scale: 0.95 }}
+    transition={{ duration: 0.6, delay: 1.3 }}
+    className="absolute inset-0 flex items-center justify-center z-20"
+  >
+    <Image
+      src="/logo1.webp"
+      alt="Celestia Global Trade"
+      width={220}
+      height={60}
+      priority
+    />
+  </motion.div>
 
-        <div className="relative max-w-6xl mx-auto px-6 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-5xl font-bold mb-6"
-          >
-            CELESTIA GT
-          </motion.h1>
+  {/* Hero Background */}
+  <Image
+    src="/hero-bg.png"
+    alt="Engineering exports"
+    fill
+    className="object-cover opacity-20"
+    priority
+  />
 
-          <div className="w-20 h-1 bg-gold mx-auto mb-6" />
+  {/* Hero Content */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1.4, duration: 0.6 }}
+    className="relative z-10 max-w-6xl mx-auto px-6 text-center"
+  >
+    <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight">
+      Engineering Exports from India<br />
+      to Global Markets
+    </h1>
 
-          <p className="text-2xl text-gold mb-6">
-            Precision Engineering. Global Supply.
-          </p>
+    <div className="w-20 h-1 bg-gold mx-auto mb-6" />
 
-          <p className="max-w-2xl mx-auto text-slate-200 mb-10">
-            Delivering engineering components and assemblies from India,
-            supported by structured quality processes and export coordination.
-          </p>
+    <p className="max-w-2xl mx-auto text-slate-200 mb-10 text-lg">
+      Supplying precision-engineered components and assemblies with
+      structured quality control and export coordination.
+    </p>
 
-          <div className="flex justify-center gap-6">
-            <button className="bg-gold px-6 py-3 rounded font-medium">
-              Explore Our Capabilities →
-            </button>
-            <button className="bg-white text-navy px-6 py-3 rounded font-medium">
-              Request a Quote
-            </button>
-          </div>
-        </div>
-      </section>
+    <div className="flex justify-center gap-6">
+      <button className="bg-gold px-8 py-4 rounded font-medium text-navy">
+        Explore Capabilities
+      </button>
+      <button className="border border-white px-8 py-4 rounded font-medium">
+        Request a Quote
+      </button>
+    </div>
+  </motion.div>
+</section>
 
       {/* ---------------- OUR PROCESS ---------------- */}
       <section className="py-24">
