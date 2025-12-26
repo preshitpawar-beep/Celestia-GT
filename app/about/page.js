@@ -95,19 +95,48 @@ export default function AboutPage() {
         </div>
       </section>
 
-{/* ---------------- WHAT WE DO (HORIZONTAL FLOW) ---------------- */}
-<section className="py-24 bg-slate-50">
+{/* ---------------- WHAT WE DO (DESIGNED FLOW) ---------------- */}
+<section className="py-24 bg-slate-50 relative overflow-hidden">
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-16">
+    <h2 className="text-4xl font-bold text-center mb-20">
       What We Do
     </h2>
 
-    <div className="relative grid md:grid-cols-3 gap-12 items-start">
+    {/* FLOW GRAPHIC (BACKGROUND) */}
+    <div className="hidden md:block absolute inset-x-0 top-[55%] -translate-y-1/2 pointer-events-none">
+      <svg
+        viewBox="0 0 1200 200"
+        className="w-full h-48"
+        fill="none"
+      >
+        <path
+          d="M200 100 C350 40, 450 40, 600 100"
+          stroke="url(#goldGradient)"
+          strokeWidth="3"
+          strokeDasharray="6 6"
+        />
+        <path
+          d="M600 100 C750 160, 850 160, 1000 100"
+          stroke="url(#goldGradient)"
+          strokeWidth="3"
+          strokeDasharray="6 6"
+        />
 
-      {/* STEP 1 */}
-      <div className="bg-white p-8 rounded-xl shadow relative z-10">
-        <h3 className="text-xl font-semibold mb-3">
+        <defs>
+          <linearGradient id="goldGradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#E3C06D" />
+            <stop offset="100%" stopColor="#C9A24D" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    {/* CARDS */}
+    <div className="relative grid md:grid-cols-3 gap-12 z-10">
+
+      <div className="bg-white p-10 rounded-2xl shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">
           Engineering Sourcing
         </h3>
         <p className="text-slate-600 leading-relaxed">
@@ -116,22 +145,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* ARROW 1 */}
-      <div className="hidden md:flex absolute left-1/3 top-1/2 -translate-y-1/2 w-24 justify-center">
-        <svg width="80" height="16" viewBox="0 0 80 16" fill="none">
-          <path
-            d="M0 8H72M72 8L64 1M72 8L64 15"
-            stroke="#C9A24D"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* STEP 2 */}
-      <div className="bg-white p-8 rounded-xl shadow relative z-10">
-        <h3 className="text-xl font-semibold mb-3">
+      <div className="bg-white p-10 rounded-2xl shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">
           Quality & Inspection
         </h3>
         <p className="text-slate-600 leading-relaxed">
@@ -140,22 +155,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      {/* ARROW 2 */}
-      <div className="hidden md:flex absolute right-1/3 top-1/2 -translate-y-1/2 w-24 justify-center">
-        <svg width="80" height="16" viewBox="0 0 80 16" fill="none">
-          <path
-            d="M0 8H72M72 8L64 1M72 8L64 15"
-            stroke="#C9A24D"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </div>
-
-      {/* STEP 3 */}
-      <div className="bg-white p-8 rounded-xl shadow relative z-10">
-        <h3 className="text-xl font-semibold mb-3">
+      <div className="bg-white p-10 rounded-2xl shadow-lg">
+        <h3 className="text-xl font-semibold mb-4">
           Export & Documentation
         </h3>
         <p className="text-slate-600 leading-relaxed">
@@ -167,7 +168,6 @@ export default function AboutPage() {
     </div>
   </div>
 </section>
-
 
       {/* ---------------- HOW WE OPERATE ---------------- */}
       <section className="py-24">
