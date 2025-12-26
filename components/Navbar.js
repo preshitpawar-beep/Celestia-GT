@@ -19,14 +19,11 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
+    <header className="sticky top-0 z-50 bg-navy">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        
+
         {/* Logo */}
-        <Link
-          href="/"
-          className="bg-navy px-4 py-2 rounded-lg flex items-center"
-        >
+        <Link href="/" className="flex items-center">
           <Image
             src="/logo1.webp"
             alt="Celestia Global Trade"
@@ -36,7 +33,7 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -44,10 +41,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`pb-1 transition ${
+                className={`transition pb-1 ${
                   isActive
                     ? "text-gold border-b-2 border-gold"
-                    : "hover:text-gold"
+                    : "text-slate-200 hover:text-gold"
                 }`}
               >
                 {link.label}
@@ -56,18 +53,18 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Desktop CTA */}
+        {/* CTA */}
         <Link
           href="/contact"
-          className="hidden md:inline-block bg-gold text-white px-5 py-2 rounded-md font-medium"
+          className="hidden md:inline-block bg-gold text-navy px-5 py-2 rounded-md font-medium"
         >
           Request Quote
         </Link>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Menu Toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-navy text-2xl"
+          className="md:hidden text-white text-2xl"
           aria-label="Toggle menu"
         >
           ☰
@@ -76,7 +73,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-white border-t">
+        <div className="md:hidden bg-navy border-t border-white/10">
           <nav className="flex flex-col px-6 py-4 gap-4 text-sm font-medium">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -85,7 +82,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={isActive ? "text-gold" : ""}
+                  className={isActive ? "text-gold" : "text-slate-200"}
                 >
                   {link.label}
                 </Link>
@@ -94,7 +91,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-2 bg-gold text-white px-4 py-2 rounded text-center"
+              className="mt-2 bg-gold text-navy px-4 py-2 rounded text-center font-medium"
             >
               Request Quote
             </Link>
