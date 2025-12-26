@@ -95,47 +95,18 @@ export default function AboutPage() {
         </div>
       </section>
 
-{/* ---------------- WHAT WE DO (DESIGNED FLOW) ---------------- */}
-<section className="py-24 bg-slate-50 relative overflow-hidden">
+{/* ---------------- WHAT WE DO (STRUCTURED SYSTEM) ---------------- */}
+<section className="py-24 bg-slate-50">
   <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-20">
+    <h2 className="text-4xl font-bold text-center mb-16">
       What We Do
     </h2>
 
-    {/* FLOW GRAPHIC (BACKGROUND) */}
-    <div className="hidden md:block absolute inset-x-0 top-[55%] -translate-y-1/2 pointer-events-none">
-      <svg
-        viewBox="0 0 1200 200"
-        className="w-full h-48"
-        fill="none"
-      >
-        <path
-          d="M200 100 C350 40, 450 40, 600 100"
-          stroke="url(#goldGradient)"
-          strokeWidth="3"
-          strokeDasharray="6 6"
-        />
-        <path
-          d="M600 100 C750 160, 850 160, 1000 100"
-          stroke="url(#goldGradient)"
-          strokeWidth="3"
-          strokeDasharray="6 6"
-        />
+    <div className="grid md:grid-cols-3 gap-10">
 
-        <defs>
-          <linearGradient id="goldGradient" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#E3C06D" />
-            <stop offset="100%" stopColor="#C9A24D" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-
-    {/* CARDS */}
-    <div className="relative grid md:grid-cols-3 gap-12 z-10">
-
-      <div className="bg-white p-10 rounded-2xl shadow-lg">
+      {/* STEP 1 */}
+      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
         <h3 className="text-xl font-semibold mb-4">
           Engineering Sourcing
         </h3>
@@ -145,7 +116,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <div className="bg-white p-10 rounded-2xl shadow-lg">
+      {/* STEP 2 */}
+      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold/80 hover:shadow-xl transition">
         <h3 className="text-xl font-semibold mb-4">
           Quality & Inspection
         </h3>
@@ -155,7 +127,8 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <div className="bg-white p-10 rounded-2xl shadow-lg">
+      {/* STEP 3 */}
+      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold/60 hover:shadow-xl transition">
         <h3 className="text-xl font-semibold mb-4">
           Export & Documentation
         </h3>
@@ -168,6 +141,7 @@ export default function AboutPage() {
     </div>
   </div>
 </section>
+
 
       {/* ---------------- HOW WE OPERATE ---------------- */}
       <section className="py-24">
