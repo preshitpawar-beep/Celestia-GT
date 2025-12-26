@@ -131,62 +131,55 @@ export default function Home() {
   return (
     <main>
 
-      {/* ---------------- HERO ---------------- */}
-      <section className="relative bg-navy text-white min-h-screen flex items-center justify-center overflow-hidden">
+     {/* ---------------- HERO ---------------- */}
+<section className="relative bg-navy text-white py-32 overflow-hidden">
+  {/* Background Image */}
+  <Image
+    src="/hero-bg.png"
+    alt="Precision CNC machining in industrial manufacturing"
+    fill
+    className="object-cover"
+    priority
+  />
 
-        {/* Intro Logo */}
-        <motion.div
-          initial={{ opacity: 1, scale: 1 }}
-          animate={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="absolute inset-0 flex items-center justify-center z-20"
-        >
-          <Image
-            src="/logo1.webp"
-            alt="Celestia Global Trade"
-            width={220}
-            height={60}
-            priority
-          />
-        </motion.div>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/60" />
 
-        {/* Background */}
-        <Image
-          src="/hero-bg.png"
-          alt="Engineering exports"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
+  <div className="relative max-w-7xl mx-auto px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="max-w-2xl text-left"
+    >
+      {/* Accent line */}
+      <div className="w-20 h-1 bg-gold mb-6" />
 
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="relative z-10 max-w-6xl mx-auto px-6 text-center"
-        >
-          <h1 className="text-5xl md:text-6xl font-semibold mb-6 leading-tight">
-            Engineering Exports from India<br />to Global Markets
-          </h1>
+      {/* Headline */}
+      <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+        Engineering Exports from India  
+        <br className="hidden md:block" />
+        to Global Markets
+      </h1>
 
-          <div className="w-20 h-1 bg-gold mx-auto mb-6" />
+      {/* Subheading */}
+      <p className="text-lg md:text-xl text-slate-200 mb-6">
+        Supplying precision-engineered components and assemblies,
+        supported by structured quality control and export coordination.
+      </p>
 
-          <p className="max-w-2xl mx-auto text-slate-200 mb-10 text-lg">
-            Supplying precision-engineered components and assemblies with
-            structured quality control and export coordination.
-          </p>
-
-          <div className="flex justify-center gap-6">
-            <button className="bg-gold px-8 py-4 rounded font-medium text-navy">
-              Explore Capabilities
-            </button>
-            <button className="border border-white px-8 py-4 rounded font-medium">
-              Request a Quote
-            </button>
-          </div>
-        </motion.div>
-      </section>
+      {/* CTA Buttons */}
+      <div className="flex flex-wrap gap-5 mt-8">
+        <button className="bg-gold text-navy px-7 py-3 rounded-md font-medium hover:bg-gold/90 transition">
+          Explore Capabilities →
+        </button>
+        <button className="border border-white/40 px-7 py-3 rounded-md font-medium hover:bg-white hover:text-navy transition">
+          Request a Quote
+        </button>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* ---------------- OUR PROCESS ---------------- */}
       <ProcessSection />
