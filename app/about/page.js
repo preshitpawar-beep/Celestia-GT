@@ -95,50 +95,79 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ---------------- WHAT WE DO ---------------- */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="text-4xl font-bold text-center mb-16"
-          >
-            What We Do
-          </motion.h2>
+{/* ---------------- WHAT WE DO (HORIZONTAL FLOW) ---------------- */}
+<section className="py-24 bg-slate-50">
+  <div className="max-w-7xl mx-auto px-6">
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              {
-                title: "Engineering Sourcing",
-                desc: "Identifying and aligning capable manufacturers based on drawings, tolerances, materials, and industry requirements."
-              },
-              {
-                title: "Quality & Inspection",
-                desc: "Coordinating dimensional checks, NDT, material verification, and inspection documentation as required."
-              },
-              {
-                title: "Export & Documentation",
-                desc: "Managing export packaging, compliance documents, and logistics for international delivery."
-              }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow"
-              >
-                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-                <p className="text-slate-600">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <h2 className="text-4xl font-bold text-center mb-16">
+      What We Do
+    </h2>
+
+    <div className="relative grid md:grid-cols-3 gap-12 items-start">
+
+      {/* STEP 1 */}
+      <div className="bg-white p-8 rounded-xl shadow relative z-10">
+        <h3 className="text-xl font-semibold mb-3">
+          Engineering Sourcing
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Identifying and aligning capable manufacturing partners based on
+          drawings, tolerances, materials, and application requirements.
+        </p>
+      </div>
+
+      {/* ARROW 1 */}
+      <div className="hidden md:flex absolute left-1/3 top-1/2 -translate-y-1/2 w-24 justify-center">
+        <svg width="80" height="16" viewBox="0 0 80 16" fill="none">
+          <path
+            d="M0 8H72M72 8L64 1M72 8L64 15"
+            stroke="#C9A24D"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      {/* STEP 2 */}
+      <div className="bg-white p-8 rounded-xl shadow relative z-10">
+        <h3 className="text-xl font-semibold mb-3">
+          Quality & Inspection
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Coordinating dimensional checks, material verification, NDT,
+          and inspection documentation aligned with buyer specifications.
+        </p>
+      </div>
+
+      {/* ARROW 2 */}
+      <div className="hidden md:flex absolute right-1/3 top-1/2 -translate-y-1/2 w-24 justify-center">
+        <svg width="80" height="16" viewBox="0 0 80 16" fill="none">
+          <path
+            d="M0 8H72M72 8L64 1M72 8L64 15"
+            stroke="#C9A24D"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
+      {/* STEP 3 */}
+      <div className="bg-white p-8 rounded-xl shadow relative z-10">
+        <h3 className="text-xl font-semibold mb-3">
+          Export & Documentation
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Managing export packaging, compliance documentation, and logistics
+          coordination for international delivery.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* ---------------- HOW WE OPERATE ---------------- */}
       <section className="py-24">
