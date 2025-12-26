@@ -117,7 +117,7 @@ export default function AboutPage() {
       </div>
 
       {/* STEP 2 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold/80 hover:shadow-xl transition">
+      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
         <h3 className="text-xl font-semibold mb-4">
           Quality & Inspection
         </h3>
@@ -128,7 +128,7 @@ export default function AboutPage() {
       </div>
 
       {/* STEP 3 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold/60 hover:shadow-xl transition">
+      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
         <h3 className="text-xl font-semibold mb-4">
           Export & Documentation
         </h3>
