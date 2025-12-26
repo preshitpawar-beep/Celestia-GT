@@ -119,9 +119,8 @@ export default function Home() {
             <div className="w-20 h-1 bg-gold mb-6" />
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Engineering Exports from India
-              <br className="hidden md:block" />
-               to Global Markets
+              Engineering Exports from India to Global Markets
+              <br className="hidden md:block" /> 
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 mb-8">
