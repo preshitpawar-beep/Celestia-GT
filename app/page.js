@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
-/* ---------------- OUR PROCESS DATA ---------------- */
+/* ---------------- PROCESS DATA ---------------- */
 
 const processSteps = [
   {
@@ -14,7 +14,7 @@ const processSteps = [
   },
   {
     title: "Supplier",
-    desc: "We align suitable manufacturing partners based on capability, compliance, and application.",
+    desc: "We align suitable manufacturing partners based on capability and compliance.",
     icon: "/process-supplier.png"
   },
   {
@@ -24,30 +24,39 @@ const processSteps = [
   },
   {
     title: "Production",
-    desc: "Manufacturing is coordinated with defined process controls and checkpoints.",
+    desc: "Manufacturing is coordinated with defined process controls.",
     icon: "/process-production.png"
   },
   {
     title: "Inspection",
-    desc: "Multi-stage inspection including dimensional checks and NDT as required.",
+    desc: "Multi-stage inspection including dimensional and NDT checks.",
     icon: "/process-inspection.png"
   },
   {
     title: "Shipping",
-    desc: "Export packaging, documentation, and logistics coordination for international delivery.",
+    desc: "Export packaging, documentation, and logistics coordination.",
     icon: "/process-shipping.png"
   },
   {
     title: "Support",
-    desc: "Post-shipment support, documentation handling, and buyer coordination.",
+    desc: "Post-shipment support and buyer coordination.",
     icon: "/process-support.png"
   }
 ];
 
-/* ---------------- PROCESS COMPONENT ---------------- */
+/* ---------------- PROCESS SECTION ---------------- */
 
 function ProcessSection() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Auto-rotate every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % processSteps.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center">
@@ -56,40 +65,41 @@ function ProcessSection() {
         From requirement to delivery, we ensure precision at every step
       </p>
 
-      <div className="grid grid-cols-2 md:grid-cols-7 gap-6 mb-10">
+      <div className="grid grid-cols-2 md:grid-cols-7 gap-8 mb-12">
         {processSteps.map((step, i) => (
-          <button
+          <motion.button
             key={i}
             onClick={() => setActiveIndex(i)}
-            className={`rounded-xl border shadow-sm p-6 flex flex-col items-center transition
+            whileHover={{ y: -6, scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className={`p-6 rounded-xl text-center transition
               ${
                 i === activeIndex
-                  ? "bg-gold text-white"
-                  : "bg-white hover:shadow-md"
+                  ? "bg-gold text-white shadow-lg"
+                  : "bg-white shadow hover:shadow-md"
               }`}
           >
-            {/* ICON CONTAINER */}
-            <div
-              className={`w-20 h-20 rounded-full flex items-center justify-center mb-4
-                ${i === activeIndex ? "bg-white/20" : "bg-gold/10"}`}
-            >
-              <Image
-                src={step.icon}
-                alt={step.title}
-                width={48}
-                height={48}
-                className="object-contain"
-              />
-            </div>
-
+            <Image
+              src={step.icon}
+              alt={step.title}
+              width={64}
+              height={64}
+              className="mx-auto mb-4"
+            />
             <p className="font-semibold">{step.title}</p>
-          </button>
+          </motion.button>
         ))}
       </div>
 
-      <div className="p-6 bg-white shadow rounded-xl max-w-3xl mx-auto text-slate-700">
+      <motion.div
+        key={activeIndex}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="p-6 bg-white shadow rounded-xl max-w-3xl mx-auto text-slate-700"
+      >
         {processSteps[activeIndex].desc}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -150,11 +160,11 @@ export default function Home() {
       {/* ---------------- WHY CHOOSE ---------------- */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-14">
+          <h2 className="text-4xl font-bold text-center mb-16">
             Why Industries Choose Celestia GT
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="space-y-8 max-w-5xl mx-auto">
             {[
               { title: "ISO-Aligned Supplier Network", icon: "/why-iso.png", desc: "Audited manufacturing partners across India." },
               { title: "Casting Range: 50mm to 1.5m", icon: "/why-casting.png", desc: "Up to 1 ton capacity for industrial applications." },
@@ -163,24 +173,24 @@ export default function Home() {
               { title: "Global Reach", icon: "/why-global.png", desc: "Serving UK, EU, Middle East, and Americas." },
               { title: "Technical Documentation", icon: "/why-docs.png", desc: "Inspection and quality documentation with every shipment." }
             ].map((item, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition"
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-2xl p-8 shadow flex gap-8 items-center"
               >
-                {/* BIG ICON */}
-                <div className="w-24 h-24 rounded-full bg-gold/10 flex items-center justify-center mb-6">
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    width={56}
-                    height={56}
-                    className="object-contain"
-                  />
-                </div>
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={72}
+                  height={72}
+                />
 
-                <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                <p className="text-slate-600">{item.desc}</p>
-              </div>
+                <div>
+                  <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+                  <p className="text-slate-600">{item.desc}</p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
