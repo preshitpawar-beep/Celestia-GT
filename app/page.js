@@ -121,7 +121,7 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
               Engineering Exports from India
               <br className="hidden md:block" />
-              to Global Markets
+               to Global Markets
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 mb-8">
