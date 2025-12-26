@@ -30,7 +30,7 @@ const processSteps = [
   {
     title: "Inspection",
     desc: "Multi-stage inspection including dimensional checks and NDT as required.",
-    icon: "/process-inspection.webp"
+    icon: "/process-inspection.png"
   },
   {
     title: "Shipping",
@@ -149,12 +149,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "ISO-Aligned Supplier Network", icon: "/why-iso.webp", desc: "Audited manufacturing partners across India." },
-              { title: "Casting Range: 50mm to 1.5m", icon: "/why-casting.webp", desc: "Up to 1 ton capacity for industrial applications." },
-              { title: "Cost Efficiency", icon: "/why-cost.webp", desc: "Optimised sourcing without compromising specifications." },
-              { title: "Complete Confidentiality", icon: "/why-nda.webp", desc: "All enquiries governed under ICC NDAs." },
-              { title: "Global Reach", icon: "/why-global.webp", desc: "Serving UK, EU, Middle East, and Americas." },
-              { title: "Technical Documentation", icon: "/why-docs.webp", desc: "Inspection and quality documentation with every shipment." }
+              { title: "ISO-Aligned Supplier Network", icon: "/why-iso.png", desc: "Audited manufacturing partners across India." },
+              { title: "Casting Range: 50mm to 1.5m", icon: "/why-casting.png", desc: "Up to 1 ton capacity for industrial applications." },
+              { title: "Cost Efficiency", icon: "/why-cost.png", desc: "Optimised sourcing without compromising specifications." },
+              { title: "Complete Confidentiality", icon: "/why-nda.png", desc: "All enquiries governed under ICC NDAs." },
+              { title: "Global Reach", icon: "/why-global.png", desc: "Serving UK, EU, Middle East, and Americas." },
+              { title: "Technical Documentation", icon: "/why-docs.png", desc: "Inspection and quality documentation with every shipment." }
             ].map((item, i) => (
               <div key={i} className="bg-white p-8 rounded-xl shadow">
                 <Image
