@@ -227,14 +227,20 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* CTA – italic like About Us */}
-      <section className="bg-[#0b1b2f] py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-lg italic text-white/80">
-            Request our quality brochure or discuss your specific inspection requirements
-          </p>
-        </div>
-      </section>
+{/* QUALITY CTA */}
+<section className="py-24 bg-gold text-black text-center">
+  <motion.p
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    variants={fadeUp}
+    className="max-w-4xl mx-auto text-xl italic"
+  >
+    “Quality you can measure. Reliability you can trust.
+    Documentation you can depend on.”
+  </motion.p>
+</section>
+
     </main>
   );
 }
