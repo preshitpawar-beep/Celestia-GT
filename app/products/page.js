@@ -4,6 +4,17 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+/* ---------------- MOTION ---------------- */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
 const products = [
   {
     title: "Machined Components",
@@ -63,25 +74,43 @@ export default function ProductsPage() {
 
       {/* ---------------- HERO ---------------- */}
       <section className="bg-navy text-white py-28 text-center">
-        <h1 className="text-5xl font-bold mb-4">
+        <motion.h1
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="text-5xl font-bold mb-4"
+        >
           Products & Capabilities
-        </h1>
+        </motion.h1>
+
         <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-        <p className="text-slate-200 max-w-2xl mx-auto text-lg">
+
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          transition={{ delay: 0.1 }}
+          className="text-slate-200 max-w-2xl mx-auto text-lg"
+        >
           Engineering solutions designed for precision, reliability,
           and global delivery.
-        </p>
+        </motion.p>
       </section>
 
-      {/* ---------------- PRODUCTS GRID ---------------- */}
+      {/* ---------------- PRODUCTS GRID (UNCHANGED) ---------------- */}
       <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
-
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10"
+        >
           {products.map((item, i) => (
             <motion.div
               key={i}
               whileHover={{ y: -6 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="group relative rounded-2xl overflow-hidden shadow-lg bg-slate-900"
             >
               {/* IMAGE */}
@@ -110,7 +139,7 @@ export default function ProductsPage() {
                   </p>
                 </div>
 
-                {/* HOVER OVERLAY (NO BLUE TINT) */}
+                {/* HOVER OVERLAY */}
                 <div className="
                   absolute inset-0
                   bg-black/60
@@ -136,21 +165,34 @@ export default function ProductsPage() {
               </div>
             </motion.div>
           ))}
-
-        </div>
+        </motion.div>
       </section>
 
-      {/* ---------------- CTA ---------------- */}
-      <section className="bg-navy text-white py-24 text-center">
-        <p className="mb-8 text-lg">
-          Our engineering team is ready to discuss your specific requirements.
-        </p>
+      {/* ---------------- CTA (MATCHES ABOUT US) ---------------- */}
+      <section className="py-24 bg-navy text-white text-center">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-4xl mx-auto text-xl italic mb-8"
+        >
+          “Our engineering team is ready to discuss your specific requirements.”
+        </motion.p>
 
-        <Link href="/contact">
-          <button className="bg-gold text-navy px-10 py-4 rounded font-medium hover:scale-105 transition">
-            Contact Our Team
-          </button>
-        </Link>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ delay: 0.1 }}
+        >
+          <Link href="/contact">
+            <button className="bg-gold text-navy px-10 py-4 rounded font-medium hover:scale-105 transition">
+              Contact Our Team
+            </button>
+          </Link>
+        </motion.div>
       </section>
 
     </main>
