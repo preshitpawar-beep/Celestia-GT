@@ -110,8 +110,6 @@ export default function ProductsPage() {
                     ))}
                   </ul>
 
-                  <div className="mt-6 text-gold text-sm font-medium">
-                    View capabilities →
                   </div>
                 </div>
               </div>
@@ -121,7 +119,7 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-navy text-white py-20 text-center">
+      <section className="bg-gold text-black py-20 text-center">
         <p className="mb-6 text-lg">
           Our engineering team is ready to discuss your specific requirements.
         </p>
