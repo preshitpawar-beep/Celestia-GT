@@ -2,6 +2,87 @@
 
 import { motion } from "framer-motion";
 
+/* ---------- ICONS (MUST BE FIRST) ---------- */
+
+const shieldIcon = (
+  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
+    <path d="M9 1l7 4v6c0 4-3 6-7 6s-7-2-7-6V5l7-4z" />
+  </svg>
+);
+
+const eyeIcon = (
+  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
+    <circle cx="9" cy="9" r="3" />
+    <path d="M1 9s3-5 8-5 8 5 8 5-3 5-8 5-8-5-8-5z" />
+  </svg>
+);
+
+const fileIcon = (
+  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
+    <path d="M4 2h7l3 3v11H4z" />
+    <path d="M7 7h4M7 11h4" />
+  </svg>
+);
+
+const lockIcon = (
+  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
+    <rect x="3" y="8" width="12" height="8" rx="2" />
+    <path d="M6 8V6a3 3 0 0 1 6 0v2" />
+  </svg>
+);
+
+/* ---------- DATA ---------- */
+
+const commitments = [
+  {
+    title: "ISO-Certified Suppliers",
+    desc:
+      "50+ ISO-certified partners across India ensuring consistent quality standards.",
+    img: "/images/quality/commitment-1.png",
+    icon: shieldIcon,
+  },
+  {
+    title: "Multi-stage Inspection",
+    desc:
+      "Dimensional, visual, and NDT verification at every production stage.",
+    img: "/images/quality/commitment-2.png",
+    icon: eyeIcon,
+  },
+  {
+    title: "Complete Documentation",
+    desc:
+      "Each order includes MTC, FAI, NDT reports, and quality photos.",
+    img: "/images/quality/commitment-3.png",
+    icon: fileIcon,
+  },
+  {
+    title: "Confidentiality",
+    desc:
+      "All data protected under ICC-governed NDAs for complete security.",
+    img: "/images/quality/commitment-4.png",
+    icon: lockIcon,
+  },
+];
+
+const stages = [
+  { n: "01", title: "Raw Material Verification", desc: "Material certificates and chemical composition analysis" },
+  { n: "02", title: "In-Process Inspection", desc: "Continuous monitoring during manufacturing" },
+  { n: "03", title: "Dimensional Check", desc: "Precision measurement against technical drawings" },
+  { n: "04", title: "NDT Testing", desc: "Non-destructive testing for internal defects" },
+  { n: "05", title: "Visual Inspection", desc: "Surface finish and aesthetic quality check" },
+  { n: "06", title: "Final Documentation", desc: "Complete quality documentation package" },
+];
+
+const documents = [
+  { title: "MTC", desc: "Material Test Certificates with chemical composition" },
+  { title: "FAI", desc: "First Article Inspection reports" },
+  { title: "NDT Reports", desc: "Non-Destructive Testing documentation" },
+  { title: "Quality Photos", desc: "Visual documentation of finished products" },
+  { title: "Dimensional Reports", desc: "Detailed measurement data vs drawings" },
+];
+
+/* ---------- PAGE ---------- */
+
 export default function Quality() {
   return (
     <main>
@@ -146,10 +227,10 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA – italic like About Us */}
       <section className="bg-[#0b1b2f] py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-lg text-white/80">
+          <p className="text-lg italic text-white/80">
             Request our quality brochure or discuss your specific inspection requirements
           </p>
         </div>
@@ -157,82 +238,3 @@ export default function Quality() {
     </main>
   );
 }
-
-/* ---------- DATA ---------- */
-
-const commitments = [
-  {
-    title: "ISO-Certified Suppliers",
-    desc:
-      "50+ ISO-certified partners across India ensuring consistent quality standards.",
-    img: "/images/quality/commitment-1.png",
-    icon: shieldIcon,
-  },
-  {
-    title: "Multi-stage Inspection",
-    desc:
-      "Dimensional, visual, and NDT verification at every production stage.",
-    img: "/images/quality/commitment-2.png",
-    icon: eyeIcon,
-  },
-  {
-    title: "Complete Documentation",
-    desc:
-      "Each order includes MTC, FAI, NDT reports, and quality photos.",
-    img: "/images/quality/commitment-3.png",
-    icon: fileIcon,
-  },
-  {
-    title: "Confidentiality",
-    desc:
-      "All data protected under ICC-governed NDAs for complete security.",
-    img: "/images/quality/commitment-4.png",
-    icon: lockIcon,
-  },
-];
-
-const stages = [
-  { n: "01", title: "Raw Material Verification", desc: "Material certificates and chemical composition analysis" },
-  { n: "02", title: "In-Process Inspection", desc: "Continuous monitoring during manufacturing" },
-  { n: "03", title: "Dimensional Check", desc: "Precision measurement against technical drawings" },
-  { n: "04", title: "NDT Testing", desc: "Non-destructive testing for internal defects" },
-  { n: "05", title: "Visual Inspection", desc: "Surface finish and aesthetic quality check" },
-  { n: "06", title: "Final Documentation", desc: "Complete quality documentation package" },
-];
-
-const documents = [
-  { title: "MTC", desc: "Material Test Certificates with chemical composition" },
-  { title: "FAI", desc: "First Article Inspection reports" },
-  { title: "NDT Reports", desc: "Non-Destructive Testing documentation" },
-  { title: "Quality Photos", desc: "Visual documentation of finished products" },
-  { title: "Dimensional Reports", desc: "Detailed measurement data vs drawings" },
-];
-
-/* ---------- ICONS ---------- */
-
-const shieldIcon = (
-  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
-    <path d="M9 1l7 4v6c0 4-3 6-7 6s-7-2-7-6V5l7-4z" />
-  </svg>
-);
-
-const eyeIcon = (
-  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
-    <circle cx="9" cy="9" r="3" />
-    <path d="M1 9s3-5 8-5 8 5 8 5-3 5-8 5-8-5-8-5z" />
-  </svg>
-);
-
-const fileIcon = (
-  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
-    <path d="M4 2h7l3 3v11H4z" />
-    <path d="M7 7h4M7 11h4" />
-  </svg>
-);
-
-const lockIcon = (
-  <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
-    <rect x="3" y="8" width="12" height="8" rx="2" />
-    <path d="M6 8V6a3 3 0 0 1 6 0v2" />
-  </svg>
-);
