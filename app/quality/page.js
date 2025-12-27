@@ -2,7 +2,18 @@
 
 import { motion } from "framer-motion";
 
-/* ---------- ICONS (MUST BE FIRST) ---------- */
+/* ------------------ ANIMATION ------------------ */
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+/* ------------------ ICONS ------------------ */
 
 const shieldIcon = (
   <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
@@ -31,7 +42,7 @@ const lockIcon = (
   </svg>
 );
 
-/* ---------- DATA ---------- */
+/* ------------------ DATA ------------------ */
 
 const commitments = [
   {
@@ -81,7 +92,7 @@ const documents = [
   { title: "Dimensional Reports", desc: "Detailed measurement data vs drawings" },
 ];
 
-/* ---------- PAGE ---------- */
+/* ------------------ PAGE ------------------ */
 
 export default function Quality() {
   return (
@@ -227,20 +238,19 @@ export default function Quality() {
         </div>
       </section>
 
-{/* QUALITY CTA */}
-<section className="py-24 bg-gold text-black text-center">
-  <motion.p
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeUp}
-    className="max-w-4xl mx-auto text-xl italic"
-  >
-    “Quality you can measure. Reliability you can trust.
-    Documentation you can depend on.”
-  </motion.p>
-</section>
-
+      {/* QUALITY CTA – SAME AS ABOUT */}
+      <section className="py-24 bg-gold text-black text-center">
+        <motion.p
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-4xl mx-auto text-xl italic"
+        >
+          “Quality you can measure. Reliability you can trust.
+          Documentation you can depend on.”
+        </motion.p>
+      </section>
     </main>
   );
 }
