@@ -1,34 +1,60 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 const products = [
   {
     title: "Machined Components",
-    desc: "CNC precision components manufactured with tight tolerances across aluminum, steel, and engineered alloys.",
-    img: "/products/machined-components.png",
+    short: "CNC precision parts with tight tolerances.",
+    image: "/products/machined-components.png",
+    points: [
+      "CNC turning, milling & grinding",
+      "Tight tolerance repeatability",
+      "Aluminum, steel & hardened alloys"
+    ]
   },
   {
     title: "Industrial Castings",
-    desc: "Ferrous and non-ferrous castings from 50mm to 1.5m, up to 1 ton, with full NDT and inspection.",
-    img: "/products/industrial-castings.png",
+    short: "Ferrous & non-ferrous castings up to 1 ton.",
+    image: "/products/industrial-castings.png",
+    points: [
+      "Sand, investment & die casting",
+      "Ferrous & non-ferrous materials",
+      "NDT & dimensional inspection"
+    ]
   },
   {
     title: "Fabricated Assemblies",
-    desc: "Custom welded and fabricated assemblies built to drawing, specification, and functional requirements.",
-    img: "/products/fabricated-assemblies.png",
+    short: "Custom welding and fabrication solutions.",
+    image: "/products/fabricated-assemblies.png",
+    points: [
+      "Structural & precision assemblies",
+      "Welding, fit-up & finishing",
+      "Export-ready fabrication"
+    ]
   },
   {
     title: "Aluminum & Steel Products",
-    desc: "High-quality light and heavy metal products supplied machined or fabricated as required.",
-    img: "/products/aluminum-steel.png",
+    short: "High-quality light and heavy metal parts.",
+    image: "/products/aluminum-steel.png",
+    points: [
+      "Light & heavy sections",
+      "Machined or fabricated",
+      "Industrial-grade materials"
+    ]
   },
   {
     title: "Engineering Services",
-    desc: "2D/3D design support, reverse engineering, and job work coordination across manufacturing partners.",
-    img: "/products/engineering-services.png",
-  },
+    short: "Design, reverse engineering & job work.",
+    image: "/products/engineering-services.png",
+    points: [
+      "2D / 3D design support",
+      "Reverse engineering",
+      "Job work coordination"
+    ]
+  }
 ];
 
 export default function ProductsPage() {
@@ -37,20 +63,13 @@ export default function ProductsPage() {
 
       {/* ---------------- HERO ---------------- */}
       <section className="bg-navy text-white py-28 text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-5xl font-bold mb-6"
-        >
+        <h1 className="text-5xl font-bold mb-4">
           Products & Capabilities
-        </motion.h1>
-
+        </h1>
         <div className="w-20 h-1 bg-gold mx-auto mb-6" />
-
-        <p className="max-w-2xl mx-auto text-slate-200 text-lg">
-          Engineering solutions delivered through trusted manufacturing
-          partners and structured quality processes.
+        <p className="text-slate-200 max-w-2xl mx-auto text-lg">
+          Engineering solutions designed for precision, reliability,
+          and global delivery.
         </p>
       </section>
 
@@ -61,85 +80,77 @@ export default function ProductsPage() {
           {products.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative bg-white rounded-2xl shadow overflow-hidden"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="group relative rounded-2xl overflow-hidden shadow-lg bg-slate-900"
             >
-
-              {/* Image */}
-              <div className="relative w-full h-[260px] md:h-[280px] bg-slate-100 flex items-center justify-center">
+              {/* IMAGE */}
+              <div className="relative h-72">
                 <Image
-                  src={item.img}
+                  src={item.image}
                   alt={item.title}
                   fill
-                  className="
-                    object-contain
-                    md:object-cover
-                    transition-transform duration-500
-                    group-hover:scale-105
-                  "
+                  className="object-cover"
                 />
-              </div>
 
-              {/* Hover / Reveal Overlay */}
-              <div
-                className="
+                {/* DEFAULT OVERLAY */}
+                <div className="
                   absolute inset-0
-                  bg-black/70
-                  text-white
+                  bg-black/50
                   flex flex-col justify-end
+                  p-6
+                  transition-opacity duration-300
+                  group-hover:opacity-0
+                ">
+                  <h3 className="text-white text-xl font-semibold mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-slate-200 text-sm">
+                    {item.short}
+                  </p>
+                </div>
+
+                {/* HOVER OVERLAY (NO BLUE TINT) */}
+                <div className="
+                  absolute inset-0
+                  bg-black/60
                   p-6
                   opacity-100
                   md:opacity-0
                   md:group-hover:opacity-100
-                  transition-opacity duration-400
-                "
-              >
-                <h3 className="text-xl font-semibold mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-200 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
+                  transition-opacity duration-300
+                ">
+                  <h3 className="text-white text-xl font-semibold mb-4">
+                    {item.title}
+                  </h3>
 
-              {/* Mobile content (visible by default) */}
-              <div className="p-6 md:hidden">
-                <h3 className="text-lg font-semibold mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 text-sm">
-                  {item.desc}
-                </p>
+                  <ul className="space-y-2 text-sm text-slate-200">
+                    {item.points.map((point, idx) => (
+                      <li key={idx} className="flex gap-2">
+                        <span className="text-gold">✓</span>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-
             </motion.div>
           ))}
 
         </div>
       </section>
 
-      {/* ---------------- CTA (MATCHES ABOUT US) ---------------- */}
-      <section className="bg-navy py-24 text-center text-white">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-8 text-lg"
-        >
+      {/* ---------------- CTA ---------------- */}
+      <section className="bg-navy text-white py-24 text-center">
+        <p className="mb-8 text-lg">
           Our engineering team is ready to discuss your specific requirements.
-        </motion.p>
+        </p>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
-          className="bg-gold text-navy px-10 py-4 rounded font-medium"
-        >
-          Contact Our Team
-        </motion.button>
+        <Link href="/contact">
+          <button className="bg-gold text-navy px-10 py-4 rounded font-medium hover:scale-105 transition">
+            Contact Our Team
+          </button>
+        </Link>
       </section>
 
     </main>
