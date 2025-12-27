@@ -184,7 +184,7 @@ export default function AboutPage() {
       </section>
 
       {/* ---------------- CLOSING STATEMENT ---------------- */}
-      <section className="py-24 bg-navy text-white text-center">
+      <section className="py-24 bg-gold text-black text-center">
         <motion.p
           initial="hidden"
           whileInView="visible"
