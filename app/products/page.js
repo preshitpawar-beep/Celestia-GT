@@ -110,7 +110,6 @@ export default function ProductsPage() {
                     ))}
                   </ul>
 
-                  </div>
                 </div>
               </div>
             </motion.div>
