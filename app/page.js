@@ -37,14 +37,15 @@ function ProcessSection() {
           From requirement to delivery, we ensure precision at every step
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-7 gap-8 mb-6 md:mb-12">
+        {/* MOBILE: 3 columns | DESKTOP: 7 columns */}
+        <div className="grid grid-cols-3 md:grid-cols-7 gap-6 mb-8">
           {processSteps.map((step, i) => (
             <motion.button
               key={i}
               onClick={() => setActiveIndex(i)}
               whileHover={{ y: -6, scale: 1.04 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`relative p-6 rounded-xl shadow transition
+              className={`p-4 md:p-6 rounded-xl shadow transition
                 ${
                   i === activeIndex
                     ? "bg-gold text-white scale-105 shadow-lg"
@@ -54,27 +55,27 @@ function ProcessSection() {
               <Image
                 src={step.icon}
                 alt={step.title}
-                width={64}
-                height={64}
-                className="mx-auto mb-4"
+                width={56}
+                height={56}
+                className="mx-auto mb-3"
               />
-              <p className="font-semibold">{step.title}</p>
+              <p className="text-sm md:text-base font-semibold">{step.title}</p>
             </motion.button>
           ))}
         </div>
 
-        {/* Mobile description */}
+        {/* MOBILE DESCRIPTION */}
         <motion.div
           key={`mobile-${activeIndex}`}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="md:hidden p-6 bg-white shadow rounded-xl text-slate-700 mb-10"
+          className="md:hidden p-5 bg-white shadow rounded-xl text-slate-700 mb-10"
         >
           {processSteps[activeIndex].desc}
         </motion.div>
 
-        {/* Desktop description */}
+        {/* DESKTOP DESCRIPTION */}
         <motion.div
           key={`desktop-${activeIndex}`}
           initial={{ opacity: 0, y: 12 }}
@@ -96,9 +97,9 @@ export default function Home() {
     <main>
 
       {/* ---------------- HERO ---------------- */}
-      <section className="relative text-white overflow-hidden">
+      <section className="relative text-white overflow-hidden min-h-[85vh] md:min-h-screen">
         <div
-          className="absolute inset-0 bg-contain md:bg-cover bg-center md:bg-fixed bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center md:bg-fixed"
           style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
         <div className="absolute inset-0 bg-black/60" />
@@ -107,7 +108,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className="max-w-2xl text-left"
           >
             <div className="w-20 h-1 bg-gold mb-6" />
