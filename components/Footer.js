@@ -49,7 +49,8 @@ export default function Footer() {
         <div>
           <h4 className="text-gold font-semibold mb-4">Contact Us</h4>
           <p>📧 harsh.jaiswal@celestiagt.com</p>
-          <p>🌍 India & United Kingdom</p>
+          <p>📞 +91 7755997122</p>
+          <p>🌍 F-4 N-5 Shreenagar CIDCO, Aurangabad, Maharashtra, India 431003</p>
         </div>
       </div>
 
