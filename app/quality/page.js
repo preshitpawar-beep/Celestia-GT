@@ -47,7 +47,7 @@ const lockIcon = (
 const commitments = [
   {
     title: "ISO-Certified Suppliers",
-    desc: "50+ ISO-certified partners across India ensuring consistent quality standards.",
+    desc: "ISO-certified partners across India ensuring consistent quality standards.",
     img: "/images/quality/commitment-1.png",
     icon: shieldIcon,
   },
