@@ -57,13 +57,13 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeLeft}
-            className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg"
+            className="relative h-[260px] md:h-[420px] rounded-2xl overflow-hidden shadow-lg"
           >
             <Image
               src="/about/about-who-we-are.png"
               alt="Engineering manufacturing capability"
               fill
-              className="object-cover"
+              className="object-contain md:object-cover"
               priority
             />
           </motion.div>
@@ -95,53 +95,43 @@ export default function AboutPage() {
         </div>
       </section>
 
-{/* ---------------- WHAT WE DO (STRUCTURED SYSTEM) ---------------- */}
-<section className="py-24 bg-slate-50">
-  <div className="max-w-7xl mx-auto px-6">
+      {/* ---------------- WHAT WE DO ---------------- */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
 
-    <h2 className="text-4xl font-bold text-center mb-16">
-      What We Do
-    </h2>
+          <h2 className="text-4xl font-bold text-center mb-16">
+            What We Do
+          </h2>
 
-    <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-10">
 
-      {/* STEP 1 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
-        <h3 className="text-xl font-semibold mb-4">
-          Engineering Sourcing
-        </h3>
-        <p className="text-slate-600 leading-relaxed">
-          Identifying and aligning capable manufacturing partners based on
-          drawings, tolerances, materials, and application requirements.
-        </p>
-      </div>
+            <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold mb-4">Engineering Sourcing</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Identifying and aligning capable manufacturing partners based on
+                drawings, tolerances, materials, and application requirements.
+              </p>
+            </div>
 
-      {/* STEP 2 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
-        <h3 className="text-xl font-semibold mb-4">
-          Quality & Inspection
-        </h3>
-        <p className="text-slate-600 leading-relaxed">
-          Coordinating dimensional checks, material verification, NDT,
-          and inspection documentation aligned with buyer specifications.
-        </p>
-      </div>
+            <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold mb-4">Quality & Inspection</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Coordinating dimensional checks, material verification, NDT,
+                and inspection documentation aligned with buyer specifications.
+              </p>
+            </div>
 
-      {/* STEP 3 */}
-      <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
-        <h3 className="text-xl font-semibold mb-4">
-          Export & Documentation
-        </h3>
-        <p className="text-slate-600 leading-relaxed">
-          Managing export packaging, compliance documentation, and logistics
-          coordination for international delivery.
-        </p>
-      </div>
+            <div className="bg-white p-10 rounded-2xl shadow-md border-t-4 border-gold hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold mb-4">Export & Documentation</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Managing export packaging, compliance documentation, and logistics
+                coordination for international delivery.
+              </p>
+            </div>
 
-    </div>
-  </div>
-</section>
-
+          </div>
+        </div>
+      </section>
 
       {/* ---------------- HOW WE OPERATE ---------------- */}
       <section className="py-24">
@@ -171,13 +161,13 @@ export default function AboutPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeRight}
-            className="relative h-[420px] rounded-2xl overflow-hidden shadow-lg"
+            className="relative h-[260px] md:h-[420px] rounded-2xl overflow-hidden shadow-lg"
           >
             <Image
               src="/about/about-how-we-operate.png"
               alt="Engineering workflow and inspection process"
               fill
-              className="object-cover"
+              className="object-contain md:object-cover"
             />
           </motion.div>
         </div>
