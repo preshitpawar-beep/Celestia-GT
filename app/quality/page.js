@@ -2,7 +2,16 @@
 
 import { motion } from "framer-motion";
 
-/* ------------------ ANIMATION ------------------ */
+/* ---------------- PAGE TRANSITION ---------------- */
+
+const pageTransition = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -13,7 +22,7 @@ const fadeUp = {
   },
 };
 
-/* ------------------ ICONS ------------------ */
+/* ---------------- ICONS ---------------- */
 
 const shieldIcon = (
   <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
@@ -42,34 +51,30 @@ const lockIcon = (
   </svg>
 );
 
-/* ------------------ DATA ------------------ */
+/* ---------------- DATA ---------------- */
 
 const commitments = [
   {
     title: "ISO-Certified Suppliers",
-    desc:
-      "ISO-certified partners across India ensuring consistent quality standards.",
+    desc: "50+ ISO-certified partners across India ensuring consistent quality standards.",
     img: "/images/quality/commitment-1.png",
     icon: shieldIcon,
   },
   {
     title: "Multi-stage Inspection",
-    desc:
-      "Dimensional, visual, and NDT verification at every production stage.",
+    desc: "Dimensional, visual, and NDT verification at every production stage.",
     img: "/images/quality/commitment-2.png",
     icon: eyeIcon,
   },
   {
     title: "Complete Documentation",
-    desc:
-      "Each order includes MTC, FAI, NDT reports, and quality photos.",
+    desc: "Each order includes MTC, FAI, NDT reports, and quality photos.",
     img: "/images/quality/commitment-3.png",
     icon: fileIcon,
   },
   {
     title: "Confidentiality",
-    desc:
-      "All data protected under ICC-governed NDAs for complete security.",
+    desc: "All data protected under ICC-governed NDAs for complete security.",
     img: "/images/quality/commitment-4.png",
     icon: lockIcon,
   },
@@ -92,11 +97,11 @@ const documents = [
   { title: "Dimensional Reports", desc: "Detailed measurement data vs drawings" },
 ];
 
-/* ------------------ PAGE ------------------ */
+/* ---------------- PAGE ---------------- */
 
 export default function Quality() {
   return (
-    <main>
+    <motion.main initial="hidden" animate="visible" variants={pageTransition}>
       {/* HERO */}
       <section className="bg-gradient-to-b from-[#0b1b2f] to-[#122a45] text-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -145,17 +150,12 @@ export default function Quality() {
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-[#0b1b2f]/75" />
-
                 <div className="relative z-10 p-8 text-white h-full flex flex-col justify-end">
                   <div className="mb-3 w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-white/80">
-                    {item.desc}
-                  </p>
+                  <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+                  <p className="text-sm text-white/80">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -201,7 +201,7 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* COMPLETE DOCUMENTATION PACKAGE */}
+      {/* DOCUMENTATION */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
@@ -215,14 +215,9 @@ export default function Quality() {
 
             <div className="space-y-4">
               {documents.map((doc, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-lg shadow-sm px-6 py-4"
-                >
+                <div key={i} className="bg-white rounded-lg shadow-sm px-6 py-4">
                   <h4 className="font-semibold">{doc.title}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {doc.desc}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{doc.desc}</p>
                 </div>
               ))}
             </div>
@@ -238,7 +233,7 @@ export default function Quality() {
         </div>
       </section>
 
-      {/* QUALITY CTA – SAME AS ABOUT */}
+      {/* CTA */}
       <section className="py-24 bg-gold text-black text-center">
         <motion.p
           initial="hidden"
@@ -251,6 +246,6 @@ export default function Quality() {
           Documentation you can depend on.”
         </motion.p>
       </section>
-    </main>
+    </motion.main>
   );
 }
