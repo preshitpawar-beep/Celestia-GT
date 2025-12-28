@@ -2,16 +2,7 @@
 
 import { motion } from "framer-motion";
 
-/* ---------------- PAGE TRANSITION ---------------- */
-
-const pageTransition = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+/* ---------------- MOTION PRESETS ---------------- */
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -101,13 +92,18 @@ const documents = [
 
 export default function Quality() {
   return (
-    <motion.main initial="hidden" animate="visible" variants={pageTransition}>
+    <main>
       {/* HERO */}
       <section className="bg-gradient-to-b from-[#0b1b2f] to-[#122a45] text-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
             Quality & Reliability
-          </h1>
+          </motion.h1>
           <div className="w-14 h-[3px] bg-gold mx-auto mb-6" />
           <p className="text-lg text-white/80">
             Quality You Can Measure. Reliability You Can Trust.
@@ -117,7 +113,13 @@ export default function Quality() {
 
       {/* QUOTE */}
       <section className="py-12">
-        <div className="max-w-4xl mx-auto px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-4xl mx-auto px-6"
+        >
           <div className="bg-[#faf7f2] rounded-xl px-10 py-8 border-l-4 border-gold text-center">
             <p className="text-xl font-semibold italic text-[#0b1b2f] mb-3">
               “Quality is not an act, it is a habit.”
@@ -126,7 +128,7 @@ export default function Quality() {
               — Aristotle
             </span>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* QUALITY COMMITMENT */}
@@ -143,15 +145,14 @@ export default function Quality() {
             {commitments.map((item, i) => (
               <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
                 className="relative h-64 rounded-xl overflow-hidden"
               >
-                <img
-                  src={item.img}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <img src={item.img} alt="" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-[#0b1b2f]/75" />
                 <div className="relative z-10 p-8 text-white h-full flex flex-col justify-end">
                   <div className="mb-3 w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
@@ -192,12 +193,8 @@ export default function Quality() {
                 <div className="absolute -top-4 left-6 bg-gold text-white text-sm font-semibold px-4 py-1 rounded-md">
                   {step.n}
                 </div>
-                <h3 className="text-lg font-semibold mt-4 mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {step.desc}
-                </p>
+                <h3 className="text-lg font-semibold mt-4 mb-2">{step.title}</h3>
+                <p className="text-sm text-muted-foreground">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -207,7 +204,12 @@ export default function Quality() {
       {/* DOCUMENTATION */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
             <h2 className="text-3xl font-bold mb-6">
               Complete Documentation Package
             </h2>
@@ -224,15 +226,21 @@ export default function Quality() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="rounded-xl overflow-hidden">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="rounded-xl overflow-hidden"
+          >
             <img
               src="/images/quality/documentation.png"
               alt=""
               className="w-full h-full object-cover"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -249,6 +257,6 @@ export default function Quality() {
           Documentation you can depend on.”
         </motion.p>
       </section>
-    </motion.main>
+    </main>
   );
 }
