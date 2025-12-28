@@ -248,7 +248,7 @@ export default function ContactPage() {
           >
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-              <p className="text-sm"><strong>Email:</strong><br />sales@celestiagt.com</p>
+              <p className="text-sm"><strong>Email:</strong><br />harsh.jaiswal@celestiagt.com</p>
               <p className="text-sm mt-4"><strong>Website:</strong><br />www.celestiagt.com</p>
               <p className="text-sm mt-4"><strong>Location:</strong><br />India</p>
             </div>
