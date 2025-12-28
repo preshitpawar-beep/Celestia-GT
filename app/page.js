@@ -3,17 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
-/* ---------------- GLOBAL MOTION ---------------- */
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-};
+import Link from "next/link";
 
 /* ---------------- PROCESS DATA ---------------- */
 
@@ -47,7 +37,7 @@ function ProcessSection() {
           From requirement to delivery, we ensure precision at every step
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-7 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-7 gap-8 mb-6 md:mb-12">
           {processSteps.map((step, i) => (
             <motion.button
               key={i}
@@ -68,25 +58,29 @@ function ProcessSection() {
                 height={64}
                 className="mx-auto mb-4"
               />
-
               <p className="font-semibold">{step.title}</p>
-
-              {i === activeIndex && (
-                <motion.div
-                  layoutId="process-underline"
-                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-10 h-1 bg-gold rounded-full"
-                />
-              )}
             </motion.button>
           ))}
         </div>
 
+        {/* Mobile description */}
         <motion.div
-          key={activeIndex}
+          key={`mobile-${activeIndex}`}
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="p-6 bg-white shadow rounded-xl max-w-3xl mx-auto text-slate-700"
+          transition={{ duration: 0.4 }}
+          className="md:hidden p-6 bg-white shadow rounded-xl text-slate-700 mb-10"
+        >
+          {processSteps[activeIndex].desc}
+        </motion.div>
+
+        {/* Desktop description */}
+        <motion.div
+          key={`desktop-${activeIndex}`}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="hidden md:block p-6 bg-white shadow rounded-xl max-w-3xl mx-auto text-slate-700"
         >
           {processSteps[activeIndex].desc}
         </motion.div>
@@ -104,23 +98,22 @@ export default function Home() {
       {/* ---------------- HERO ---------------- */}
       <section className="relative text-white overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center md:bg-fixed"
+          className="absolute inset-0 bg-contain md:bg-cover bg-center md:bg-fixed bg-no-repeat"
           style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
         <div className="absolute inset-0 bg-black/60" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+        <div className="relative max-w-7xl mx-auto px-6 py-20 md:py-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.7 }}
             className="max-w-2xl text-left"
           >
             <div className="w-20 h-1 bg-gold mb-6" />
 
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Engineering Exports from India to Global Markets
-              <br className="hidden md:block" /> 
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 mb-8">
@@ -129,12 +122,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap gap-5">
-              <button className="bg-gold text-navy px-7 py-3 rounded-md font-medium">
-                Explore Capabilities →
-              </button>
-              <button className="border border-white/40 px-7 py-3 rounded-md font-medium">
-                Request a Quote
-              </button>
+              <Link href="/products">
+                <button className="bg-gold text-navy px-7 py-3 rounded-md font-medium">
+                  Explore Capabilities →
+                </button>
+              </Link>
+
+              <Link href="/contact">
+                <button className="border border-white/40 px-7 py-3 rounded-md font-medium">
+                  Request a Quote
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -142,41 +140,6 @@ export default function Home() {
 
       {/* ---------------- OUR PROCESS ---------------- */}
       <ProcessSection />
-
-      {/* ---------------- WHY CHOOSE ---------------- */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            Why Industries Choose Celestia GT
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              { title: "ISO-Aligned Supplier Network", icon: "/why-iso.png", desc: "Audited manufacturing partners across India." },
-              { title: "Casting Range: 50mm to 1.5m", icon: "/why-casting.png", desc: "Up to 1 ton capacity for industrial applications." },
-              { title: "Cost Efficiency", icon: "/why-cost.png", desc: "Optimised sourcing without compromising specifications." },
-              { title: "Complete Confidentiality", icon: "/why-nda.png", desc: "All enquiries governed under ICC NDAs." },
-              { title: "Global Reach", icon: "/why-global.png", desc: "Serving UK, EU, Middle East, and Americas." },
-              { title: "Technical Documentation", icon: "/why-docs.png", desc: "Inspection and quality documentation with every shipment." }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white p-8 rounded-xl shadow flex gap-6 items-start"
-              >
-                <Image src={item.icon} alt={item.title} width={56} height={56} />
-                <div>
-                  <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                  <p className="text-slate-600">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ---------------- CTA ---------------- */}
       <section
@@ -189,19 +152,21 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6 }}
             className="mb-8 text-lg md:text-xl"
           >
             Send us your requirement — we’ll respond within 24 hours.
           </motion.p>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="bg-gold text-navy px-10 py-4 rounded-md font-medium"
-          >
-            Submit Enquiry
-          </motion.button>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="bg-gold text-navy px-10 py-4 rounded-md font-medium"
+            >
+              Contact our team
+            </motion.button>
+          </Link>
         </div>
       </section>
 
