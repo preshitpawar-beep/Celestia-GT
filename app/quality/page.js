@@ -118,10 +118,13 @@ export default function Quality() {
       {/* QUOTE */}
       <section className="py-12">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-[#faf7f2] rounded-xl px-10 py-8 border-l-4 border-gold">
-            <p className="text-xl font-semibold text-center italic text-[#0b1b2f]">
-              “We don’t just inspect quality – we deliver it.”
+          <div className="bg-[#faf7f2] rounded-xl px-10 py-8 border-l-4 border-gold text-center">
+            <p className="text-xl font-semibold italic text-[#0b1b2f] mb-3">
+              “Quality is not an act, it is a habit.”
             </p>
+            <span className="block text-sm font-medium text-[#0b1b2f]/70">
+              — Aristotle
+            </span>
           </div>
         </div>
       </section>
