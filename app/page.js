@@ -59,7 +59,10 @@ function ProcessSection() {
                 height={56}
                 className="mx-auto mb-3"
               />
-              <p className="text-sm md:text-base font-semibold">{step.title}</p>
+              <p className="text-sm md:text-base font-semibold text-center leading-tight">
+  {step.title}
+</p>
+
             </motion.button>
           ))}
         </div>
