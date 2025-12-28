@@ -61,7 +61,8 @@ function ProcessSection() {
                 className="mx-auto mb-3"
               />
 
-              <p className="text-sm md:text-base font-semibold text-center leading-tight break-words max-w-full">
+              <p className="font-semibold text-center leading-tight
+                text-[11px] sm:text-xs md:text-base whitespace-nowrap">
                 {step.title}
               </p>
             </motion.button>
