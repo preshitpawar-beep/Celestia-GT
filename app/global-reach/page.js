@@ -253,7 +253,7 @@ export default function GlobalReach() {
           variants={fadeUp}
           className="max-w-4xl mx-auto text-xl italic"
         >
-          Let’s discuss how we can support your international sourcing needs.
+          "Let’s discuss how we can support your international sourcing needs."
         </motion.p>
       </section>
     </main>
