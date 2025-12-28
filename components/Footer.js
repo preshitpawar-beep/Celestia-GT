@@ -48,7 +48,7 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <h4 className="text-gold font-semibold mb-4">Contact Us</h4>
-          <p>📧 sales@celestiagt.com</p>
+          <p>📧 harsh.jaiswal@celestiagt.com</p>
           <p>🌍 India & United Kingdom</p>
         </div>
       </div>
