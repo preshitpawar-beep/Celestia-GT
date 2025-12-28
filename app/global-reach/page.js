@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-/* ---------------- PAGE TRANSITION ---------------- */
+/* ---------------- PAGE OPEN TRANSITION ---------------- */
 
 const pageTransition = {
   hidden: { opacity: 0, y: 16 },
@@ -59,17 +59,49 @@ const chartIcon = (
 /* ---------------- DATA ---------------- */
 
 const regions = [
-  { title: "United Kingdom", desc: "Customer interface and market coordination.", icon: locationIcon },
-  { title: "Europe", desc: "Machined and cast products supply base.", icon: locationIcon },
-  { title: "Middle East", desc: "Industrial and spare part clients.", icon: locationIcon },
-  { title: "Americas", desc: "Custom and batch exports.", icon: locationIcon },
+  {
+    title: "United Kingdom",
+    desc: "Customer interface and market coordination.",
+    icon: locationIcon,
+  },
+  {
+    title: "Europe",
+    desc: "Machined and cast products supply base.",
+    icon: locationIcon,
+  },
+  {
+    title: "Middle East",
+    desc: "Industrial and spare part clients.",
+    icon: locationIcon,
+  },
+  {
+    title: "Americas",
+    desc: "Custom and batch exports.",
+    icon: locationIcon,
+  },
 ];
 
 const logistics = [
-  { title: "Global Shipping", desc: "EXW, FOB, CIF, and DAP terms available", icon: shipIcon },
-  { title: "Secure Packaging", desc: "Export-grade packaging and documentation", icon: boxIcon },
-  { title: "Customs Support", desc: "Complete customs and regulatory compliance", icon: checkIcon },
-  { title: "Timely Delivery", desc: "On-time delivery across all regions", icon: chartIcon },
+  {
+    title: "Global Shipping",
+    desc: "EXW, FOB, CIF, and DAP terms available",
+    icon: shipIcon,
+  },
+  {
+    title: "Secure Packaging",
+    desc: "Export-grade packaging and documentation",
+    icon: boxIcon,
+  },
+  {
+    title: "Customs Support",
+    desc: "Complete customs and regulatory compliance",
+    icon: checkIcon,
+  },
+  {
+    title: "Timely Delivery",
+    desc: "On-time delivery across all regions",
+    icon: chartIcon,
+  },
 ];
 
 /* ---------------- PAGE ---------------- */
@@ -103,16 +135,23 @@ export default function GlobalReach() {
             </p>
           </div>
 
-          {/* IMAGE */}
+          {/* 🌍 GLOBAL IMAGE */}
           <div className="rounded-2xl overflow-hidden mb-16 bg-muted">
             <img
-              src="/images/global/global-reach.png"
+              src="/global/global-reach.png"
               alt=""
-              className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-contain md:object-cover"
+              className="
+                w-full 
+                h-[220px] 
+                sm:h-[320px] 
+                md:h-[420px] 
+                object-contain 
+                md:object-cover
+              "
             />
           </div>
 
-          {/* REGIONS */}
+          {/* REGION CARDS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {regions.map((region, i) => (
               <motion.div
@@ -136,7 +175,7 @@ export default function GlobalReach() {
         </div>
       </section>
 
-      {/* LOGISTICS */}
+      {/* LOGISTICS EXCELLENCE */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -165,6 +204,30 @@ export default function GlobalReach() {
                   {item.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SUPPLY NETWORK */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              Our Supply Network
+            </h2>
+            <div className="w-12 h-[3px] bg-gold mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="rounded-xl overflow-hidden">
+                <img
+                  src={`/global/network-${n}.png`}
+                  alt=""
+                  className="w-full h-56 object-cover"
+                />
+              </div>
             ))}
           </div>
         </div>
