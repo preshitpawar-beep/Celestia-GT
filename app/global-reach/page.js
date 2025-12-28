@@ -2,16 +2,7 @@
 
 import { motion } from "framer-motion";
 
-/* ---------------- PAGE OPEN TRANSITION ---------------- */
-
-const pageTransition = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+/* ---------------- MOTION PRESETS ---------------- */
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -108,13 +99,18 @@ const logistics = [
 
 export default function GlobalReach() {
   return (
-    <motion.main initial="hidden" animate="visible" variants={pageTransition}>
+    <main>
       {/* HERO */}
       <section className="bg-gradient-to-b from-[#0b1b2f] to-[#122a45] text-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
             Global Reach
-          </h1>
+          </motion.h1>
           <div className="w-14 h-[3px] bg-gold mx-auto mb-6" />
           <p className="text-lg text-white/80">
             From India to the World
@@ -124,7 +120,13 @@ export default function GlobalReach() {
 
       {/* GLOBAL PRESENCE */}
       <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-6xl mx-auto px-6"
+        >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Our Global Presence
@@ -156,8 +158,11 @@ export default function GlobalReach() {
             {regions.map((region, i) => (
               <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
                 className="bg-white rounded-xl shadow-sm p-8"
               >
                 <div className="mb-4 w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-white">
@@ -172,7 +177,7 @@ export default function GlobalReach() {
               </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* LOGISTICS EXCELLENCE */}
@@ -211,7 +216,13 @@ export default function GlobalReach() {
 
       {/* SUPPLY NETWORK */}
       <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="max-w-6xl mx-auto px-6"
+        >
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Our Supply Network
@@ -230,7 +241,7 @@ export default function GlobalReach() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* CTA */}
@@ -245,6 +256,6 @@ export default function GlobalReach() {
           Let’s discuss how we can support your international sourcing needs.
         </motion.p>
       </section>
-    </motion.main>
+    </main>
   );
 }
