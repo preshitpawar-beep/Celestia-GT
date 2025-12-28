@@ -116,7 +116,7 @@ export default function GlobalReach() {
       {/* GLOBAL PRESENCE */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Our Global Presence
             </h2>
@@ -126,13 +126,46 @@ export default function GlobalReach() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* 🌍 GLOBAL IMAGE SECTION */}
+          <div className="relative rounded-2xl overflow-hidden mb-16 bg-muted">
+            <img
+              src="/images/global/global-reach.png"
+              alt=""
+              className="
+                w-full 
+                h-[220px] 
+                sm:h-[320px] 
+                md:h-[420px] 
+                object-contain 
+                md:object-cover
+              "
+            />
+
+            {/* Stats overlay – desktop only */}
+            <div className="hidden md:flex absolute bottom-6 left-0 right-0 justify-center gap-16 text-white">
+              <div className="text-center">
+                <p className="text-2xl font-bold">120+</p>
+                <p className="text-sm text-white/80">Global Clients</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold">500+</p>
+                <p className="text-sm text-white/80">Projects Delivered</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold">4</p>
+                <p className="text-sm text-white/80">Continents</p>
+              </div>
+            </div>
+          </div>
+
+          {/* REGION CARDS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {regions.map((region, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.25 }}
-                className="bg-white rounded-xl shadow-sm p-8 text-left"
+                className="bg-white rounded-xl shadow-sm p-8"
               >
                 <div className="mb-4 w-10 h-10 bg-gold rounded-lg flex items-center justify-center text-white">
                   {region.icon}
@@ -159,7 +192,7 @@ export default function GlobalReach() {
             <div className="w-12 h-[3px] bg-gold mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {logistics.map((item, i) => (
               <motion.div
                 key={i}
@@ -194,32 +227,20 @@ export default function GlobalReach() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="rounded-xl overflow-hidden">
-              <img
-                src="/images/global/network-1.png"
-                alt=""
-                className="w-full h-56 object-cover"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden">
-              <img
-                src="/images/global/network-2.png"
-                alt=""
-                className="w-full h-56 object-cover"
-              />
-            </div>
-            <div className="rounded-xl overflow-hidden">
-              <img
-                src="/images/global/network-3.png"
-                alt=""
-                className="w-full h-56 object-cover"
-              />
-            </div>
+            {["1", "2", "3"].map((n) => (
+              <div key={n} className="rounded-xl overflow-hidden">
+                <img
+                  src={`/images/global/network-${n}.png`}
+                  alt=""
+                  className="w-full h-56 object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA – SAME PATTERN AS QUALITY */}
+      {/* CTA */}
       <section className="py-24 bg-gold text-black text-center">
         <motion.p
           initial="hidden"
@@ -228,7 +249,7 @@ export default function GlobalReach() {
           variants={fadeUp}
           className="max-w-4xl mx-auto text-xl italic"
         >
-          Let’s discuss how we can support your international sourcing needs.
+          "Let’s discuss how we can support your international sourcing needs."
         </motion.p>
       </section>
     </main>
