@@ -2,7 +2,16 @@
 
 import { motion } from "framer-motion";
 
-/* ------------------ ANIMATION ------------------ */
+/* ---------------- PAGE TRANSITION ---------------- */
+
+const pageTransition = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -13,7 +22,7 @@ const fadeUp = {
   },
 };
 
-/* ------------------ ICONS ------------------ */
+/* ---------------- ICONS ---------------- */
 
 const locationIcon = (
   <svg width="18" height="18" fill="none" stroke="white" strokeWidth="2">
@@ -47,59 +56,27 @@ const chartIcon = (
   </svg>
 );
 
-/* ------------------ DATA ------------------ */
+/* ---------------- DATA ---------------- */
 
 const regions = [
-  {
-    title: "United Kingdom",
-    desc: "Customer interface and market coordination.",
-    icon: locationIcon,
-  },
-  {
-    title: "Europe",
-    desc: "Machined and cast products supply base.",
-    icon: locationIcon,
-  },
-  {
-    title: "Middle East",
-    desc: "Industrial and spare part clients.",
-    icon: locationIcon,
-  },
-  {
-    title: "Americas",
-    desc: "Custom and batch exports.",
-    icon: locationIcon,
-  },
+  { title: "United Kingdom", desc: "Customer interface and market coordination.", icon: locationIcon },
+  { title: "Europe", desc: "Machined and cast products supply base.", icon: locationIcon },
+  { title: "Middle East", desc: "Industrial and spare part clients.", icon: locationIcon },
+  { title: "Americas", desc: "Custom and batch exports.", icon: locationIcon },
 ];
 
 const logistics = [
-  {
-    title: "Global Shipping",
-    desc: "EXW, FOB, CIF, and DAP terms available",
-    icon: shipIcon,
-  },
-  {
-    title: "Secure Packaging",
-    desc: "Export-grade packaging and documentation",
-    icon: boxIcon,
-  },
-  {
-    title: "Customs Support",
-    desc: "Complete customs and regulatory compliance",
-    icon: checkIcon,
-  },
-  {
-    title: "Timely Delivery",
-    desc: "On-time delivery across all regions",
-    icon: chartIcon,
-  },
+  { title: "Global Shipping", desc: "EXW, FOB, CIF, and DAP terms available", icon: shipIcon },
+  { title: "Secure Packaging", desc: "Export-grade packaging and documentation", icon: boxIcon },
+  { title: "Customs Support", desc: "Complete customs and regulatory compliance", icon: checkIcon },
+  { title: "Timely Delivery", desc: "On-time delivery across all regions", icon: chartIcon },
 ];
 
-/* ------------------ PAGE ------------------ */
+/* ---------------- PAGE ---------------- */
 
 export default function GlobalReach() {
   return (
-    <main>
+    <motion.main initial="hidden" animate="visible" variants={pageTransition}>
       {/* HERO */}
       <section className="bg-gradient-to-b from-[#0b1b2f] to-[#122a45] text-white py-28">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -126,39 +103,16 @@ export default function GlobalReach() {
             </p>
           </div>
 
-          {/* 🌍 GLOBAL IMAGE SECTION */}
-          <div className="relative rounded-2xl overflow-hidden mb-16 bg-muted">
+          {/* IMAGE */}
+          <div className="rounded-2xl overflow-hidden mb-16 bg-muted">
             <img
               src="/images/global/global-reach.png"
               alt=""
-              className="
-                w-full 
-                h-[220px] 
-                sm:h-[320px] 
-                md:h-[420px] 
-                object-contain 
-                md:object-cover
-              "
+              className="w-full h-[220px] sm:h-[320px] md:h-[420px] object-contain md:object-cover"
             />
-
-            {/* Stats overlay – desktop only */}
-            <div className="hidden md:flex absolute bottom-6 left-0 right-0 justify-center gap-16 text-white">
-              <div className="text-center">
-                <p className="text-2xl font-bold">120+</p>
-                <p className="text-sm text-white/80">Global Clients</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold">500+</p>
-                <p className="text-sm text-white/80">Projects Delivered</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold">4</p>
-                <p className="text-sm text-white/80">Continents</p>
-              </div>
-            </div>
           </div>
 
-          {/* REGION CARDS */}
+          {/* REGIONS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
             {regions.map((region, i) => (
               <motion.div
@@ -182,7 +136,7 @@ export default function GlobalReach() {
         </div>
       </section>
 
-      {/* LOGISTICS EXCELLENCE */}
+      {/* LOGISTICS */}
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -216,30 +170,6 @@ export default function GlobalReach() {
         </div>
       </section>
 
-      {/* SUPPLY NETWORK */}
-      <section className="py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              Our Supply Network
-            </h2>
-            <div className="w-12 h-[3px] bg-gold mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {["1", "2", "3"].map((n) => (
-              <div key={n} className="rounded-xl overflow-hidden">
-                <img
-                  src={`/images/global/network-${n}.png`}
-                  alt=""
-                  className="w-full h-56 object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-24 bg-gold text-black text-center">
         <motion.p
@@ -249,9 +179,9 @@ export default function GlobalReach() {
           variants={fadeUp}
           className="max-w-4xl mx-auto text-xl italic"
         >
-          "Let’s discuss how we can support your international sourcing needs."
+          Let’s discuss how we can support your international sourcing needs.
         </motion.p>
       </section>
-    </main>
+    </motion.main>
   );
 }
