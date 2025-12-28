@@ -113,7 +113,6 @@ export default function ProductsPage() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className="group relative rounded-2xl overflow-hidden shadow-lg bg-slate-900"
             >
-              {/* IMAGE */}
               <div className="relative h-72">
                 <Image
                   src={item.image}
@@ -122,15 +121,7 @@ export default function ProductsPage() {
                   className="object-cover"
                 />
 
-                {/* DEFAULT OVERLAY */}
-                <div className="
-                  absolute inset-0
-                  bg-black/50
-                  flex flex-col justify-end
-                  p-6
-                  transition-opacity duration-300
-                  group-hover:opacity-0
-                ">
+                <div className="absolute inset-0 bg-black/50 flex flex-col justify-end p-6 transition-opacity duration-300 group-hover:opacity-0">
                   <h3 className="text-white text-xl font-semibold mb-2">
                     {item.title}
                   </h3>
@@ -139,16 +130,7 @@ export default function ProductsPage() {
                   </p>
                 </div>
 
-                {/* HOVER OVERLAY */}
-                <div className="
-                  absolute inset-0
-                  bg-black/60
-                  p-6
-                  opacity-100
-                  md:opacity-0
-                  md:group-hover:opacity-100
-                  transition-opacity duration-300
-                ">
+                <div className="absolute inset-0 bg-black/60 p-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                   <h3 className="text-white text-xl font-semibold mb-4">
                     {item.title}
                   </h3>
@@ -166,6 +148,119 @@ export default function ProductsPage() {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* ---------------- OUR CAPABILITIES (NEW SECTION) ---------------- */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-3">Our Capabilities</h2>
+            <div className="w-12 h-[3px] bg-gold mx-auto" />
+          </motion.div>
+
+          {/* Capability 1 */}
+          <div className="grid md:grid-cols-2 gap-14 items-center mb-24">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="relative h-[260px] md:h-[380px] rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image
+                src="/products/capability-machining.png"
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <h3 className="text-2xl font-bold mb-4">Precision Machining</h3>
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                Our CNC machining capabilities deliver components with
+                tolerances as tight as ±0.01mm. From prototype to batch
+                production, we ensure consistent quality across all volumes.
+              </p>
+
+              <ul className="space-y-3 text-slate-700">
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  3-axis, 4-axis, and 5-axis CNC machining
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  Turning, milling, and grinding operations
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  Material range from aluminum to hardened steel
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Capability 2 */}
+          <div className="grid md:grid-cols-2 gap-14 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="order-2 md:order-1"
+            >
+              <h3 className="text-2xl font-bold mb-4">Industrial Casting</h3>
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                We handle castings from 50mm to 1.5m, up to 1 ton in weight.
+                All castings are NDT-tested and can be supplied fully
+                machined to your specifications.
+              </p>
+
+              <ul className="space-y-3 text-slate-700">
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  Sand casting, investment casting, die casting
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  Pattern making - match plate, loose etc. 
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-gold">✓</span>
+                  Complete NDT and dimensional inspection
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="relative h-[260px] md:h-[380px] rounded-2xl overflow-hidden shadow-lg order-1 md:order-2"
+            >
+              <Image
+                src="/products/capability-casting.png"
+                alt=""
+                fill
+                className="object-cover"
+              />
+            </motion.div>
+          </div>
+
+        </div>
       </section>
 
       {/* ---------------- CTA (MATCHES ABOUT US) ---------------- */}
