@@ -45,7 +45,8 @@ function ProcessSection() {
               onClick={() => setActiveIndex(i)}
               whileHover={{ y: -6, scale: 1.04 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className={`p-4 md:p-6 rounded-xl shadow transition flex flex-col items-center justify-center
+              className={`p-4 md:p-6 rounded-xl shadow transition
+                flex flex-col items-center justify-center
                 ${
                   i === activeIndex
                     ? "bg-gold text-white scale-105 shadow-lg"
@@ -59,10 +60,10 @@ function ProcessSection() {
                 height={56}
                 className="mx-auto mb-3"
               />
-              <p className=""text-sm md:text-base font-semibold text-center leading-tight break-words max-w-full">
-              {step.title}
-              </p>
 
+              <p className="text-sm md:text-base font-semibold text-center leading-tight break-words max-w-full">
+                {step.title}
+              </p>
             </motion.button>
           ))}
         </div>
