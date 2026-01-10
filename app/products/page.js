@@ -32,7 +32,7 @@ const products = [
     image: "/products/industrial-castings.png",
     points: [
       "Sand, investment & die casting",
-      "Ferrous & non-ferrous materials",
+      "Brass Castings",
       "NDT & dimensional inspection"
     ]
   },
