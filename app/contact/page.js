@@ -35,24 +35,57 @@ const fadeRight = {
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [fileError, setFileError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+  const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB (GoDaddy SMTP limit)
 
   function handleFileChange(e) {
     const file = e.target.files[0];
     if (!file) return;
 
     if (file.size > MAX_FILE_SIZE) {
-      setFileError("File size must be less than 10 MB.");
+      setFileError(
+        `File size must be less than 20 MB. Your file is ${(
+          file.size /
+          (1024 * 1024)
+        ).toFixed(2)} MB.`
+      );
       e.target.value = "";
     } else {
       setFileError("");
     }
   }
 
-  function handleSubmit() {
-    if (!fileError) {
-      setSubmitted(true);
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    if (fileError) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const formData = new FormData(e.target);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        setSubmitError(
+          data.error || "Failed to send enquiry. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitError("Failed to send enquiry. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -89,7 +122,6 @@ export default function ContactPage() {
       {/* ---------------- FORM + INFO ---------------- */}
       <section className="pb-28">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-10 items-start">
-
           {/* ---------------- FORM / SUCCESS ---------------- */}
           <motion.div
             initial="hidden"
@@ -100,9 +132,6 @@ export default function ContactPage() {
           >
             {!submitted ? (
               <form
-                action="mailto:harsh.jaiswal@celestiagt.com"
-                method="POST"
-                encType="multipart/form-data"
                 onSubmit={handleSubmit}
                 className="bg-white rounded-2xl shadow-lg p-10"
               >
@@ -150,7 +179,9 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="text-sm font-medium">Product Type *</label>
+                    <label className="text-sm font-medium">
+                      Product Type *
+                    </label>
                     <input
                       type="text"
                       name="product_type"
@@ -176,27 +207,40 @@ export default function ContactPage() {
                     Preferred Incoterms
                   </label>
                   <div className="flex gap-6 text-sm">
-                    <label><input type="radio" name="incoterms" value="EXW" /> EXW</label>
-                    <label><input type="radio" name="incoterms" value="FOB" /> FOB</label>
-                    <label><input type="radio" name="incoterms" value="CIF" /> CIF</label>
-                    <label><input type="radio" name="incoterms" value="DAP" /> DAP</label>
+                    <label>
+                      <input type="radio" name="incoterms" value="EXW" /> EXW
+                    </label>
+                    <label>
+                      <input type="radio" name="incoterms" value="FOB" /> FOB
+                    </label>
+                    <label>
+                      <input type="radio" name="incoterms" value="CIF" /> CIF
+                    </label>
+                    <label>
+                      <input type="radio" name="incoterms" value="DAP" /> DAP
+                    </label>
                   </div>
                 </div>
 
                 {/* Upload */}
                 <div className="mt-8">
                   <label className="text-sm font-medium block mb-2">
-                    Drawing Upload (PDF / DWG / STEP)
+                    Drawing Upload (PDF / DWG / STEP) - Max 20 MB
                   </label>
                   <input
                     type="file"
                     name="attachment"
+                    accept=".pdf,.dwg,.step,.stp,.dxf"
                     onChange={handleFileChange}
                     className="w-full border rounded-lg p-3"
                   />
                   {fileError && (
                     <p className="text-sm text-red-600 mt-2">{fileError}</p>
                   )}
+                  <p className="text-xs text-slate-500 mt-2">
+                    For files larger than 20 MB, please email directly to
+                    harsh.jaiswal@celestiagt.com
+                  </p>
                 </div>
 
                 {/* Notes */}
@@ -211,12 +255,18 @@ export default function ContactPage() {
                   />
                 </div>
 
+                {submitError && (
+                  <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-sm text-red-600">{submitError}</p>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  disabled={!!fileError}
+                  disabled={!!fileError || isSubmitting}
                   className="mt-10 w-full bg-gold text-black font-semibold py-4 rounded-xl hover:opacity-90 transition disabled:opacity-50"
                 >
-                  Send Secure Enquiry →
+                  {isSubmitting ? "Sending..." : "Send Secure Enquiry →"}
                 </button>
 
                 <p className="text-xs text-center text-slate-500 mt-4">
@@ -230,9 +280,8 @@ export default function ContactPage() {
                   Enquiry Sent Successfully
                 </h2>
                 <p className="text-slate-700 max-w-md mx-auto">
-                  Thank you for contacting Celestia GT.  
-                  Your enquiry has been sent successfully and our team will
-                  respond within 24 hours.
+                  Thank you for contacting Celestia GT. Your enquiry has been
+                  sent successfully and our team will respond within 24 hours.
                 </p>
               </div>
             )}
@@ -248,9 +297,21 @@ export default function ContactPage() {
           >
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h3 className="text-xl font-bold mb-4">Contact Information</h3>
-              <p className="text-sm"><strong>Email:</strong><br />harsh.jaiswal@celestiagt.com</p>
-              <p className="text-sm mt-4"><strong>Website:</strong><br />www.celestiagt.com</p>
-              <p className="text-sm mt-4"><strong>Location:</strong><br />India</p>
+              <p className="text-sm">
+                <strong>Email:</strong>
+                <br />
+                harsh.jaiswal@celestiagt.com
+              </p>
+              <p className="text-sm mt-4">
+                <strong>Website:</strong>
+                <br />
+                www.celestiagt.com
+              </p>
+              <p className="text-sm mt-4">
+                <strong>Location:</strong>
+                <br />
+                India
+              </p>
             </div>
 
             <div className="bg-gold rounded-2xl p-8">
