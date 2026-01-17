@@ -5,7 +5,6 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white pt-20">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 text-sm">
-
         {/* Brand */}
         <div>
           <Image
@@ -25,11 +24,21 @@ export default function Footer() {
         <div>
           <h4 className="text-gold font-semibold mb-4">Quick Links</h4>
           <ul className="space-y-2">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/products">Products</Link></li>
-            <li><Link href="/quality">Quality</Link></li>
-            <li><Link href="/global-reach">Global Reach</Link></li>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/about">About Us</Link>
+            </li>
+            <li>
+              <Link href="/products">Products</Link>
+            </li>
+            <li>
+              <Link href="/quality">Quality</Link>
+            </li>
+            <li>
+              <Link href="/global-reach">Global Reach</Link>
+            </li>
           </ul>
         </div>
 
@@ -50,7 +59,9 @@ export default function Footer() {
           <h4 className="text-gold font-semibold mb-4">Contact Us</h4>
           <p>📧 harsh.jaiswal@celestiagt.com</p>
           <p>📞 +91 7755997122</p>
-          <p>🌍 F-4 N-5 Shreenagar CIDCO, Aurangabad, Maharashtra, India 431003</p>
+          <p>
+            🌍 F-4 N-5 Shreenagar CIDCO, Aurangabad, Maharashtra, India 431003
+          </p>
         </div>
       </div>
 
@@ -63,7 +74,8 @@ export default function Footer() {
           height={40}
           className="mx-auto mb-3"
         />
-        © 2025 Celestia GT. All enquiries governed by ICC NDAs.
+        © {new Date().getFullYear()} Celestia GT. All enquiries governed by ICC
+        NDAs.
       </div>
     </footer>
   );
