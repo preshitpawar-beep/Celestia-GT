@@ -105,7 +105,7 @@ export default function Home() {
       <section className="relative text-white overflow-hidden min-h-[85vh] md:min-h-screen">
         <div
           className="absolute inset-0 bg-cover bg-center md:bg-fixed"
-          style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+          style={{ backgroundImage: "url('/hero-bg.png')" }}
         />
         <div className="absolute inset-0 bg-black/60" />
 
