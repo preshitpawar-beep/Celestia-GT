@@ -79,7 +79,7 @@ const organizationSchema = {
     name: "Harsh Jaiswal",
     url: "https://www.linkedin.com/in/harsh-jaiswal-4918b3287",
   },
-  sameAs: ["https://www.linkedin.com/company/115780911"],
+  sameAs: ["https://www.linkedin.com/company/celestia-global-trade"],
 };
 
 export default function RootLayout({ children }) {
