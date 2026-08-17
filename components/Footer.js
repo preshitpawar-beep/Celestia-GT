@@ -72,8 +72,11 @@ export default function Footer() {
           alt="Devraj Group"
           width={120}
           height={40}
-          className="mx-auto mb-3"
+          className="mx-auto mb-2"
         />
+        <p className="mb-3 text-slate-400">
+          Celestia GT is the engineering exports division of the Devraj Group.
+        </p>
         © {new Date().getFullYear()} Celestia GT. All enquiries governed by ICC
         NDAs.
       </div>
