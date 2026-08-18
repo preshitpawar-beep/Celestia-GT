@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 /* ---------------- MOTION PRESETS ---------------- */
 
@@ -38,6 +38,9 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
 
+  // Records when the form was first rendered, for the spam time-trap.
+  const formStartRef = useRef(Date.now());
+
   const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB (GoDaddy SMTP limit)
 
   function handleFileChange(e) {
@@ -67,6 +70,8 @@ export default function ContactPage() {
 
     try {
       const formData = new FormData(e.target);
+      // Time on page before submit, used server-side to catch bots.
+      formData.append("elapsed_ms", String(Date.now() - formStartRef.current));
 
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -135,6 +140,28 @@ export default function ContactPage() {
                 onSubmit={handleSubmit}
                 className="bg-white rounded-2xl shadow-lg p-10"
               >
+                {/* Honeypot: hidden from people, only bots fill it. */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </label>
+                </div>
+
                 <h2 className="text-2xl font-bold mb-8">Send Enquiry</h2>
 
                 <div className="grid md:grid-cols-2 gap-6">
